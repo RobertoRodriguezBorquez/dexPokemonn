@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pokedex</title>
+    <link rel="stylesheet" href="src/style/style.css" />
+    <link rel="icon" href="public/icono.png" type="image/x-icon">
+    <!-- fuente pokemon old-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div class="container" id="container">
+      <!-- Header -->
+      <header>
+        <h1 class="headerTitulo press-start-2p-regular " id="tittle">Listado de Pokémon</h1>
+      </header>
+      <!-- Buscador -->
+      <div class="containerBuscador">
+        <input
+          class="inputBuscador"
+          type="text"
+          id="pokemonInput"
+          placeholder="Buscar Pokémon..."
+        />
+               <button class="buscadorBtn" id="bntBuscar" aria-label="Buscar Pokémon">
+          Buscar
+        </button> 
+      </div>
+      <main>
+        <!-- Tarjetas -->
+       
+      </main>
+      <!-- Presentador Info de Pokémon -->
+      <section class="info-pokemon" id="info-pokemon">
+        
+      </section>
+
+      <!-- Footer -->
+      <footer class="paginas">
+        <button class="buscadorBtn" id="btnAtras">Atrás</button>
+        <button class="buscadorBtn" id="btnSiguiente">Siguiente</button>
+      </footer>
+    </div>
+
+    <!-- Script -->
+    <script type="module" src="src/main.js"></script>
+  </body>
+</html>
