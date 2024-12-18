@@ -1,0 +1,1 @@
+pokedex con js vanilla , html y css sin framework. App que consume la pokeApi para acceder a los datos de toda la pokedex, puedes navegar en orden de id por botones atrás y siguiente, o puedes utilizar el buscador el cual podrás acceder directamente al pokémon mediante su id o nombre.
