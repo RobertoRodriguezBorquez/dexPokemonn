@@ -124,8 +124,21 @@ const infoPokemon = async (id) => {
   }
 };
 
+// Función para limpiar estilos si hay una búsqueda activa
+function limpiarEstilosBusqueda() {
+  if (main.classList.contains("busqueda-resultado")) {
+    main.classList.remove("busqueda-resultado"); // Elimina clase del main
+  }
+
+  const tarjetaUnica = main.querySelector(".tarjeta-1.unica");
+  if (tarjetaUnica) {
+    tarjetaUnica.classList.remove("unica"); // Elimina clase especial de tarjeta
+  }
+}
+
 // Función búsqueda Pokémon
 const buscarPokemon = async () => {
+  limpiarEstilosBusqueda();  // Limpiar estilos de búsqueda antes de iniciar búsqueda
   const pokemonNameOrId = pokemonInput.value.toLowerCase();
   const urlBusqueda = `https://pokeapi.co/api/v2/pokemon/${pokemonNameOrId}`;
 
@@ -153,35 +166,10 @@ const buscarPokemon = async () => {
     alert("Hubo un error al realizar la búsqueda.");
   }
 };
-// Función para limpiar estilos si hay una búsqueda activa
-function limpiarEstilosBusqueda() {
-  if (main.classList.contains("busqueda-resultado")) {
-    main.classList.remove("busqueda-resultado"); // Elimina clase del main
-  }
-
-  const tarjetaUnica = main.querySelector(".tarjeta-1.unica");
-  if (tarjetaUnica) {
-    tarjetaUnica.classList.remove("unica"); // Elimina clase especial de tarjeta
-  }
-
-  // Limpia el contenido de info-pokemon
-  seccionInfoPokemon.innerHTML = "";
-  seccionInfoPokemon.style.display = "none";
-}
-
-// Evento para actualizar pantalla si se borra la búsqueda
-pokemonInput.addEventListener("input", () => {
-  if (pokemonInput.value.trim() === "") {
-    main.classList.remove("busqueda-resultado"); // Remueve la clase centradora
-    accesoApi(); // Vuelve a cargar la página actual
-  }
-});
-
-// Evento para el botón de búsqueda
-btnBuscar.addEventListener("click", buscarPokemon);
 
 // Función para acceder a la API y cargar la lista
 const accesoApi = async () => {
+  limpiarEstilosBusqueda();  // Limpiar estilos de búsqueda antes de cargar nueva página
   const urlApi = `https://pokeapi.co/api/v2/pokemon/?limit=4&offset=${pagina}`;
   try {
     const recibo = await fetch(urlApi);
@@ -212,18 +200,29 @@ const accesoApi = async () => {
 
 // Eventos para los botones de navegación
 btnAtras.addEventListener("click", () => {
+  limpiarEstilosBusqueda();  // Limpiar estilos de búsqueda antes de cargar nueva página
   if (pagina > 0) {
     pagina -= 4;
     accesoApi();
-    limpiarEstilosBusqueda();
   }
 });
 
 btnSiguiente.addEventListener("click", () => {
+  limpiarEstilosBusqueda();  // Limpiar estilos de búsqueda antes de cargar nueva página
   pagina += 4;
   accesoApi();
-  limpiarEstilosBusqueda();
 });
+
+// Evento para actualizar pantalla si se borra la búsqueda
+pokemonInput.addEventListener("input", () => {
+  if (pokemonInput.value.trim() === "") {
+    limpiarEstilosBusqueda();  // Limpiar estilos de búsqueda
+    accesoApi();  // Vuelve a cargar la página actual
+  }
+});
+
+// Evento para el botón de búsqueda
+btnBuscar.addEventListener("click", buscarPokemon);
 
 // Carga inicial
 document.addEventListener("DOMContentLoaded", accesoApi);
