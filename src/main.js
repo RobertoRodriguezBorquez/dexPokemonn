@@ -17,8 +17,11 @@ function listaPokemon(count, name) {
         src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${count}.png"
         alt="${name}"
       />
+      <div class="tarjeta-datos"> 
       <h1>#${count}</h1>
       <p>${name.toUpperCase()}</p>
+      </div>
+      
     </div>`;
 }
 
